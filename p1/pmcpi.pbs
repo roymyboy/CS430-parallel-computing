@@ -1,0 +1,33 @@
+#!/bin/sh
+#PBS -l nodes=1:node
+#PBS -m e
+#PBS -a 1700
+# This is a PBS job submission script. The second line asks to reserve 1 node.
+# The third line asks to email you when your job finishes. The fourth line
+# asks to run your job after 5pm in the evening.
+# 
+# IMPORTANT NOTE:  Be sure to modify the "cd" command below to switch
+# to the directory in which you are currently working! 
+#------------------------------------------------------------------------
+
+
+#cd $HOME/cs430/lab/MPI/monte_carlo.private
+cd /home/students/utroy/CS430-resources/CS430/p1
+
+echo > pmcpi.log
+
+	echo "Running for 1000000000 with seed 1234" >> pmcpi.log
+	mpiexec -n 2 pmcpi 1000000000 1234 >> pmcpi.log
+
+	echo "Running for 2000000000 with seed 1234" >> pmcpi.log
+	mpiexec -n 4 pmcpi 2000000000 1234 >> pmcpi.log
+
+	echo "Running for 4000000000 with seed 1234" >> pmcpi.log
+	mpiexec -n 8 pmcpi 4000000000 1234 >> pmcpi.log
+
+	echo "Running for 8000000000 with seed 1234" >> pmcpi.log
+	mpiexec -n 16 pmcpi 8000000000 1234 >> pmcpi.log
+
+	echo "Running for 8000000000 with seed 1234" >> pmcpi.log
+	mpiexec -n 32 pmcpi 8000000000 1234  >> pmcpi.log
+

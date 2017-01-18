@@ -1,0 +1,8 @@
+#!/bin/sh
+#PBS -l nodes=1:node
+#PBS -m e
+
+cd /home/students/utroy/CS430-resources/CS430/p2
+
+./test1.sh > test1.results
+./test2.sh > test2.results
